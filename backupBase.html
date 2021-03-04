@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>OSRS Price Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+
+</head>
+<body>
+
+<div id="price2353">
+
+</div>
+<div id="price453">
+
+</div>
+<div id="price440">
+
+</div>
+
+<div id="flexbox">
+    <div id="scale">
+    </div>
+    <div id="graphBox">
+        <div id="graphContainer">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+</body>
+
+<script>
+
+    $(document).ready(function(){
+
+        let itemArray = [2353,453,440];
+        let graphWidth = 1000;
+
+
+
+
+
+        $.getJSON("https://api.weirdgloop.org/exchange/history/osrs/latest?id="+itemArray[0], function(data) {
+
+            var scaleString = "";
+            let initialPrice = data[itemArray[0]].price;
+
+            for (var x= data[itemArray[0]].price + 20;x >= data[itemArray[0]].price - 20; x--) {
+                scaleString += "<div class='scaleNumber'>" + x + "</div>";
+            }
+
+
+            $("#scale").html(scaleString);
+
+
+
+
+            function getPrice () {
+
+
+                for (let i = 0; i<itemArray.length; i++) {
+
+                    $.getJSON("https://api.weirdgloop.org/exchange/history/osrs/latest?id="+itemArray[i], function(data) {
+
+                        console.log(data);
+                        console.log(i);
+
+                        $("#price"+itemArray[i]).html(data[itemArray[i]].price);
+    
+                    
+
+
+                        if(i==0) {
+
+
+                            console.log(initialPrice);
+
+                            var graphPrice = 0;
+
+                            for (var y = data[itemArray[i]].price - 20;y <= data[itemArray[i]].price; y++) {
+                                graphPrice += 20;
+                            }
+
+                            if (data[itemArray[i]].price > initialPrice) {
+
+                                for (var y = initialPrice;y < data[itemArray[i]].price; y++) {
+                                    graphPrice += 20;
+                                }
+
+                            } else if (data[itemArray[i]].price < initialPrice) {
+
+                                for (var y = initialPrice;y > data[itemArray[i]].price; y--) {
+                                    graphPrice -= 20;
+                                }
+
+                            }
+
+
+
+
+                            graphWidth += 20;
+
+
+                            $("#graphContainer").append("<div class='graph' style='margin-top: auto;background: black; margin-left: 1px; margin-right: 1px;min-width: 10px; width: 10px; height:" + graphPrice + "px'></div>");
+                            $("#graphContainer").css("width",graphWidth+"px")
+
+
+
+                        }
+
+
+                    });
+
+                }
+
+            }
+
+            getPrice();
+            setInterval(getPrice,1000)
+
+
+
+
+        });
+
+    });
+</script>
+</html>

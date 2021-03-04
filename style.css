@@ -1,0 +1,47 @@
+html {
+    overflow: auto;
+}
+
+
+#flexbox {
+    display: flex;
+    height: 800px;
+    margin-top: 50px;
+}
+
+#graphBox {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 500px;
+    height: 820px;
+    direction: rtl;
+}
+
+#graphContainer {
+    display: inline-flex;
+    direction: ltr!important;
+width: 200px;
+}
+
+
+@font-face {
+    font-family: 'osrs'; /*a name to be used later*/
+    src: url("runescape_uf.ttf") format("truetype"), url("runescape_uf.woff") format("woff"),url("runescape_uf.svg") format("svg"), url("runescape_uf.eot") format("embedded-opentype");
+
+}
+
+#scale {
+    margin-top: auto;
+    height: 820px;
+}
+
+.scaleNumber {
+    height: 20px;
+    font-size: 27px;
+    font-family: 'osrs', sans-serif;
+    /*color: #ffff00;*/
+}
+
+
+
