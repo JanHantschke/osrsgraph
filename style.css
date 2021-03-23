@@ -5,7 +5,8 @@ html {
 
 #flexbox {
     display: flex;
-    height: 800px;
+    height: 80vh;
+    width: 90vw;
     margin-top: 50px;
 }
 
@@ -14,7 +15,7 @@ html {
     overflow-y: hidden;
     overflow-x: auto;
     width: 500px;
-    height: 820px;
+    height: 100%;
     direction: rtl;
 }
 
@@ -32,13 +33,15 @@ width: 200px;
 }
 
 #scale {
-    margin-top: auto;
-    height: 820px;
+    /*margin-top: auto;*/
+    height: 80vh;
+    width: auto;
 }
 
+
 .scaleNumber {
-    height: 20px;
-    font-size: 27px;
+    height: 2.4390243902%;
+    width: 100%;
     font-family: 'osrs', sans-serif;
     /*color: #ffff00;*/
 }

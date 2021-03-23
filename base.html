@@ -4,6 +4,8 @@
     <title>OSRS Price Tool</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="textFit.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 
@@ -64,6 +66,8 @@
 
 
             $("#scale").html(scaleString);
+
+            textFit($('.scaleNumber'),{minFontSize:15});
 
 
 
